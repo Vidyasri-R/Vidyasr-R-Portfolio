@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vidyasri R | Portfolio</title>
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg: #0b0b0f;
+        --bg-2: #0f0f15;
+        --card: rgba(255, 255, 255, 0.06);
+        --stroke: rgba(255, 255, 255, 0.12);
+        --text: #f5f7fb;
+        --muted: #c9cbe0;
+        --accent: #b74b4b; /* your signature color */
+        --accent-2: #ff8a7a;
+        --maxw: 1200px;
+        --radius: 22px;
+        --shadow: 0 10px 35px rgba(0, 0, 0, 0.45);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto,
+          Arial, sans-serif;
+        background: radial-gradient(
+            1200px 800px at 80% -10%,
+            rgba(183, 75, 75, 0.25),
+            transparent 60%
+          ),
+          radial-gradient(
+            1000px 700px at -10% 110%,
+            rgba(255, 138, 122, 0.2),
+            transparent 60%
+          ),
+          var(--bg);
+        color: var(--text);
+        line-height: 1.7;
+        overflow-x: hidden;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      /* Header / Nav (CSS-only hamburger) */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 100;
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.9),
+          rgba(0, 0, 0, 0)
+        );
+        backdrop-filter: blur(6px);
+      }
+      .nav {
+        max-width: var(--maxw);
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 20px;
+      }
+      .logo {
+        font-size: 1.9rem;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+      .logo i {
+        color: var(--accent);
+      }
+      .menu a {
+        font-size: 1.05rem;
+        font-weight: 600;
+        opacity: 0.9;
+        padding: 10px 14px;
+        border-radius: 14px;
+        transition: 0.25s;
+      }
+      .menu a:hover {
+        background: var(--card);
+        color: var(--accent);
+      }
+      .menu .cta {
+        border: 1.5px solid var(--accent);
+        color: var(--accent);
+      }
+      .menu .cta:hover {
+        background: var(--accent);
+        color: #0b0b0f;
+      }
+
+      /* Hamburger */
+      #nav-toggle {
+        display: none;
+      }
+      .hamburger {
+        display: none;
+        cursor: pointer;
+        padding: 8px 10px;
+        border-radius: 12px;
+        border: 1px solid var(--stroke);
+      }
+      .hamburger i {
+        font-size: 1.25rem;
+      }
+
+      /* Layout helpers */
+      section {
+        padding: 90px 20px;
+      }
+      .wrap {
+        max-width: var(--maxw);
+        margin: auto;
+      }
+      .grid {
+        display: grid;
+        gap: 24px;
+      }
+      .two {
+        grid-template-columns: 1.15fr 0.85fr;
+      }
+      .cards {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .chip {
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.08),
+          rgba(255, 255, 255, 0.03)
+        );
+        border: 1px solid var(--stroke);
+        font-weight: 600;
+        font-size: 0.95rem;
+        color: var(--muted);
+        backdrop-filter: blur(6px);
+      }
+
+      /* Hero */
+      .hero {
+        padding: 110px 20px 60px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero .wrap {
+        display: grid;
+        gap: 28px;
+        grid-template-columns: 1.2fr 0.8fr;
+        align-items: center;
+      }
+      .kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        padding: 8px 12px;
+        border: 1px solid var(--stroke);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.03);
+      }
+      .title {
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        line-height: 1.15;
+        font-weight: 800;
+        margin: 14px 0 10px;
+      }
+      .subtitle {
+        color: var(--muted);
+        font-size: 1.1rem;
+        margin-bottom: 18px;
+      }
+      .cta-row {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 12px 18px;
+        border-radius: 14px;
+        font-weight: 700;
+        border: 1.5px solid var(--stroke);
+        background: var(--card);
+        transition: 0.25s;
+        box-shadow: var(--shadow);
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+        border-color: var(--accent);
+      }
+      .btn.primary {
+        border-color: var(--accent);
+        color: #0b0b0f;
+        background: linear-gradient(180deg, var(--accent), var(--accent-2));
+      }
+      .hero-card {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.08),
+          rgba(255, 255, 255, 0.02)
+        );
+        border: 1px solid var(--stroke);
+        border-radius: var(--radius);
+        padding: 20px;
+        display: grid;
+        grid-template-columns: 96px 1fr;
+        gap: 18px;
+        align-items: center;
+        backdrop-filter: blur(10px);
+      }
+      .avatar {
+  width: 320px;   /* Bigger profile pic */
+  height: 360px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 0 6px rgba(183, 75, 75, 0.15),
+    0 10px 40px rgba(0, 0, 0, 0.5);
+  max-width: 100%;
+  margin-left: 100px;  /* Prevents overflow */
+}
+
+/* Mobile responsiveness */
+@media (max-width: 760px) {
+  .avatar {
+    width: 280px;
+    height: 280px;
+    margin: auto;  /* centers the pic on small screens */
+  }
+}
+      .hero-stats {
+        display: flex;
+        gap: 18px;
+        flex-wrap: wrap;
+        margin-top: 8px;
+      }
+      .stat {
+        padding: 6px 10px;
+        border-radius: 10px;
+        border: 1px solid var(--stroke);
+        color: var(--muted);
+        font-weight: 600;
+        font-size: 0.92rem;
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      /* Section headers */
+      .section-title {
+        font-size: clamp(1.6rem, 3.6vw, 2.2rem);
+        font-weight: 800;
+        margin-bottom: 18px;
+      }
+      .section-sub {
+        color: var(--muted);
+        margin-bottom: 22px;
+      }
+
+      /* Card + timeline styles */
+      .card {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.07),
+          rgba(255, 255, 255, 0.03)
+        );
+        border: 1px solid var(--stroke);
+        border-radius: var(--radius);
+        padding: 18px 18px;
+        box-shadow: var(--shadow);
+      }
+      .card h3 {
+        font-size: 1.15rem;
+        margin-bottom: 6px;
+      }
+      .card p {
+        color: var(--muted);
+      }
+      .timeline {
+        position: relative;
+        padding-left: 26px;
+      }
+      .timeline:before {
+        content: "";
+        position: absolute;
+        left: 8px;
+        top: 4px;
+        bottom: 4px;
+        width: 2px;
+        background: linear-gradient(180deg, var(--accent), transparent);
+        border-radius: 2px;
+      }
+      .t-item {
+        position: relative;
+        margin-bottom: 16px;
+        padding: 14px 16px;
+        border: 1px solid var(--stroke);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.04);
+      }
+      .t-item:before {
+        content: "";
+        position: absolute;
+        left: -1px;
+        top: 16px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        border: 2px solid #0b0b0f;
+        transform: translateX(-50%);
+        box-shadow: 0 0 0 4px rgba(183, 75, 75, 0.18);
+      }
+      .meta {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        color: var(--muted);
+        font-size: 0.95rem;
+        margin: 4px 0 6px;
+      }
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 10px;
+        border: 1px dashed var(--stroke);
+        border-radius: 10px;
+        color: var(--muted);
+        font-weight: 600;
+        font-size: 0.92rem;
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      /* Lists */
+      ul.clean {
+        list-style: none;
+        display: grid;
+        gap: 10px;
+      }
+      ul.clean li {
+        position: relative;
+        padding-left: 28px;
+        color: var(--muted);
+      }
+      ul.clean li:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.6em;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 30% 30%, #ffd1cc, var(--accent));
+        box-shadow: 0 0 0 3px rgba(255, 138, 122, 0.18);
+      }
+
+      /* Contact */
+      .contact {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .contact .c-card {
+        padding: 16px;
+        border: 1px solid var(--stroke);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.04);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--muted);
+        font-weight: 600;
+      }
+      .contact .c-card i {
+        color: var(--accent);
+      }
+
+      /* Footer */
+      footer {
+        padding: 28px 20px;
+        border-top: 1px solid var(--stroke);
+        color: #b7bbd6;
+        text-align: center;
+        font-size: 0.95rem;
+      }
+
+      /* Responsive */
+      @media (max-width: 1024px) {
+        .two {
+          grid-template-columns: 1fr;
+        }
+        .cards {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .hero .wrap {
+          grid-template-columns: 1fr;
+        }
+        .hero-card {
+          grid-template-columns: 84px 1fr;
+        }
+      }
+      @media (max-width: 760px) {
+        .cards {
+          grid-template-columns: 1fr;
+        }
+        .contact {
+          grid-template-columns: 1fr;
+        }
+        .menu {
+          display: none;
+          position: absolute;
+          top: 64px;
+          left: 12px;
+          right: 12px;
+          background: rgba(12, 12, 16, 0.95);
+          border: 1px solid var(--stroke);
+          border-radius: 16px;
+          padding: 12px;
+          box-shadow: var(--shadow);
+        }
+        .menu a {
+          display: block;
+          padding: 12px 10px;
+          margin: 2px 0;
+        }
+        .hamburger {
+          display: inline-flex;
+        }
+        #nav-toggle:checked ~ .menu {
+          display: block;
+        }
+      }
+
+      /* Nice hover underline on anchor-like buttons */
+      .a-underline {
+        position: relative;
+      }
+      .a-underline:after {
+        content: "";
+        position: absolute;
+        left: 10px;
+        right: 10px;
+        bottom: 6px;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--accent),
+          transparent
+        );
+        transform: scaleX(0);
+        transform-origin: center;
+        transition: 0.25s;
+      }
+      .a-underline:hover:after {
+        transform: scaleX(1);
+      }
+      .welcome-text {
+  font-weight: 700;
+  color: var(--accent);
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  animation: typing 1.2s steps(7, end) forwards,
+             erase 1s steps(7, end) 2.5s forwards infinite;
+}
+
+/* typing */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 7ch; }
+}
+
+/* erase (backspacing effect) */
+@keyframes erase {
+  from { width: 7ch; }
+  to { width: 0; }
+}
+
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="nav">
+        <div class="logo">
+          <i class="fa-solid fa-sparkles"></i>
+          <span style="color: var(--accent)">Welcome</span>
+        </div>
+
+        <input type="checkbox" id="nav-toggle" />
+        <label for="nav-toggle" class="hamburger"
+          ><i class="fa-solid fa-bars"></i
+        ></label>
+
+        <nav class="menu">
+          <a href="#about">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#education">Education</a>
+          <a href="#skills">Skills</a>
+          <a href="#languages">Languages</a>
+          <a href="#certifications">Certifications</a>
+          <a href="#achievements">Achievements</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div class="wrap">
+        <div>
+          <span class="kicker"
+            ><i class="fa-solid fa-robot"></i> CSE(AI & ML) Undergraduate</span
+          >
+          <h1 class="title">
+            Hi, I am Vidyasri R
+          </h1>
+          <p class="subtitle">
+            Dynamic and results-driven Artificial Intelligence & Machine
+            Learning undergraduate with strong collaboration and communication
+            skills—eager to apply innovative thinking to real-world projects and
+            impactful outcomes.
+          </p>
+          <div class="cta-row">
+            <a
+              class="btn primary"
+              href="https://drive.google.com/file/d/1jWVQPlzd8OkTqfMOHnh8J9dG7ys51Bms/view?usp=sharing"
+              target="_blank"
+              ><i class="fa-regular fa-file-lines"></i> Download Resume</a
+            >
+            <!-- These two links were shared earlier; keep if you want. Remove if you prefer resume-only info -->
+            <a
+              class="btn a-underline"
+              href="https://www.linkedin.com/in/vidyasriravikumar06"
+              target="_blank"
+              ><i class="fa-brands fa-linkedin"></i> LinkedIn</a
+            >
+            <a
+              class="btn a-underline"
+              href="https://github.com/Vidyasri-R"
+              target="_blank"
+              ><i class="fa-brands fa-github"></i> GitHub</a
+            >
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat">
+              <i class="fa-solid fa-graduation-cap"></i>&nbsp; GPA 8.6 / 10
+            </div>
+            <div class="stat">
+              <i class="fa-solid fa-building"></i>&nbsp; K. Ramakrishnan College
+              of Engineering
+            </div>
+            <div class="stat">
+              <i class="fa-solid fa-user-gear"></i>&nbsp; Data Science Intern
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <img
+            src="vidyasri.jpg"
+            alt="Portrait of Vidyasri R"
+            class="avatar"
+          />
+      </div>
+    </section>
+
+    <!-- About / Summary -->
+    <section id="about">
+      <div class="wrap two">
+        <div>
+          <h2 class="section-title">Summary</h2>
+          <p class="section-sub">
+            Dynamic and results-driven Artificial Intelligence and Machine
+            Learning undergraduate with strong team collaboration and event
+            planning experience. Skilled in creating engaging presentations,
+            fostering learning environments, and leveraging technical and
+            communication skills. Eager to apply innovative skills in real-world
+            projects and contribute to impactful outcomes.
+          </p>
+
+        <div class="card">
+          <div class="badge">
+            <i class="fa-solid fa-envelope"></i> vidyasriravikumar12@gmail.com
+          </div>
+          <div class="badge">
+            <i class="fa-solid fa-phone"></i> +91 7010058380
+          </div>
+          <div class="badge">
+            <i class="fa-solid fa-house"></i> 6/18 North Vellala Street,
+            Woraiyur, Trichy
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+      <div class="wrap">
+        <h2 class="section-title">Work Experience</h2>
+        <div class="grid two">
+          <div class="card timeline">
+            <div class="t-item">
+              <h3>Data Science Intern — GeakMinds Technologies Pvt. Ltd.</h3>
+              <div class="meta">
+                <span
+                  ><i class="fa-regular fa-calendar"></i> July 2025 –
+                  October 2025</span
+                >
+              </div>
+              <p class="muted">
+                Assisting with data-driven problem solving and practical AI
+                applications.
+              </p>
+            </div>
+            <div class="t-item">
+              <h3>Photoshop Background Designer — Pacific Creation</h3>
+              <div class="meta">
+                <span
+                  ><i class="fa-regular fa-calendar"></i> Feb 2025 – Mar
+                  2025</span
+                >
+              </div>
+              <p class="muted">
+                Produced clean, consistent background designs aligned with brand
+                style.
+              </p>
+            </div>
+          </div>
+          <div class="card">
+            <h3 style="margin-bottom: 10px">Core Technical Stack</h3>
+            <div class="chips">
+              <span class="chip">Python (Basics)</span>
+              <span class="chip">Java</span>
+              <span class="chip">SQL</span>
+              <span class="chip">Data Structures in C</span>
+              <span class="chip">Photoshop</span>
+              <span class="chip">Proofreading</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <div class="wrap">
+        <h2 class="section-title">Projects</h2>
+        <div class="grid cards">
+          <article class="card">
+            <h3>
+              <i
+                class="fa-solid fa-heart-pulse"
+                style="color: var(--accent)"
+              ></i>
+              Wearable Health Monitoring Device
+            </h3>
+            <p>
+              A patented device that monitors real-time health metrics and
+              provides alerts for user wellbeing.
+            </p>
+          </article>
+          <article class="card">
+            <h3>
+              <i
+                class="fa-solid fa-stethoscope"
+                style="color: var(--accent)"
+              ></i>
+              Healthcare Chatbot (Speech Recognition)
+            </h3>
+            <p>
+              Voice-enabled AI chatbot for providing medical assistance and
+              booking appointments; accessible for visually impaired users.
+            </p>
+          </article>
+          <article class="card">
+            <h3>
+              <i class="fa-solid fa-database" style="color: var(--accent)"></i>
+              Student Database Management System
+            </h3>
+            <p>
+              Records, attendance, and performance management using a relational
+              database.
+            </p>
+          </article>
+          <article class="card">
+            <h3>
+              <i
+                class="fa-solid fa-car-wrench"
+                style="color: var(--accent)"
+              ></i>
+              Credit Card Fraud Detection
+            </h3>
+            <p>
+              Identifies fraudulent credit card transactions using anomaly detection 
+              and ensemble machine learning models. 
+            </p>
+          </article>
+          <article class="card">
+            <h3>
+              <i
+                class="fa-solid fa-car-wrench"
+                style="color: var(--accent)"
+              ></i>
+              Fake News Detection
+            </h3>
+            <p>
+              Detects whether a news article is real or fake using machine learning 
+              and text analysis techniques.
+            </p>
+          </article>
+          <article class="card">
+            <h3>
+              <i
+                class="fa-solid fa-car-wrench"
+                style="color: var(--accent)"
+              ></i>
+              Vehicle Management System
+            </h3>
+            <p>
+              Tracks and manages vehicle maintenance with reminders and service
+              logs.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+      <div class="wrap two">
+        <div class="card">
+          <h3>Bachelor in Artificial Intelligence & Machine Learning</h3>
+          <div class="meta">
+            <span
+              ><i class="fa-solid fa-school"></i> K. Ramakrishnan College of
+              Engineering</span
+            >
+            <span><i class="fa-regular fa-calendar"></i> 2023 – 2027</span>
+            <span><i class="fa-solid fa-star"></i> GPA: 8.6 / 10</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>High School</h3>
+          <div class="meta">
+            <span
+              ><i class="fa-solid fa-building-columns"></i> St. Joseph's Anglo
+              Indian Girls’ Higher Secondary School</span
+            >
+            <span><i class="fa-regular fa-calendar"></i> 2023</span>
+            <span><i class="fa-solid fa-percent"></i> 88%</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <div class="wrap">
+        <h2 class="section-title">Skills</h2>
+        <div class="grid two">
+          <div class="card">
+            <h3>Technical</h3>
+            <div class="chips" style="margin-top: 10px">
+              <span class="chip">Python (Basics)</span>
+              <span class="chip">Java</span>
+              <span class="chip">SQL</span>
+              <span class="chip">Data Structures in C</span>
+              <span class="chip">Photoshop</span>
+              <span class="chip">Proofreading</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Soft Skills</h3>
+            <div class="chips" style="margin-top: 10px">
+              <span class="chip">Teamwork</span>
+              <span class="chip">Time Management</span>
+              <span class="chip">Leadership</span>
+              <span class="chip">Effective Communication</span>
+              <span class="chip">Critical Thinking</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Languages -->
+    <section id="languages">
+      <div class="wrap">
+        <h2 class="section-title">Languages</h2>
+        <ul class="clean">
+          <li>English (Speak, Read, Write)</li>
+          <li>Tamil (Speak, Read, Write)</li>
+          <li>Telugu (Speak)</li>
+          <li>French (Basic)</li>
+          <li>Japanese (N5)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Certifications -->
+    <section id="certifications">
+      <div class="wrap">
+        <h2 class="section-title">Certifications</h2>
+        <div class="grid cards">
+          <div class="card">
+            <h3>NPTEL</h3>
+            <ul class="clean">
+              <li>Design Thinking and Innovation</li>
+              <li>Entrepreneurship Essentials</li>
+              <li>Database Management System</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>GUVI</h3>
+            <ul class="clean">
+              <li>SAWIT.AI Learnathon</li>
+              <li>Generative AI</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Achievements -->
+    <section id="achievements">
+      <div class="wrap">
+        <h2 class="section-title">Achievements</h2>
+        <div class="grid cards">
+          <div class="card">
+            <h3>
+              <i
+                class="fa-solid fa-certificate"
+                style="color: var(--accent)"
+              ></i>
+              Indian Patent — Wearable Health Monitoring Device
+            </h3>
+            <p>
+              Secured a patent for developing a wearable device that
+              continuously monitors vital signs, enabling proactive healthcare.
+            </p>
+          </div>
+          <div class="card">
+            <h3>
+              <i class="fa-solid fa-trophy" style="color: var(--accent)"></i>
+              Internship via MSME Hackathon
+            </h3>
+            <p>
+              Selected through national-level MSME hackathons for proposing
+              impactful, feasible technological solutions.
+            </p>
+          </div>
+          <div class="card">
+            <h3>
+              <i class="fa-solid fa-book-open" style="color: var(--accent)"></i>
+              Co-Authored Book
+            </h3>
+            <p>
+              Contributed as a co-author to
+              <em>Reading and Writing Dyslexia (Education Book 1)</em> (English
+              Edition), available on Amazon.
+            </p>
+          </div>
+          <div class="card">
+            <h3>
+              <i class="fa-solid fa-medal" style="color: var(--accent)"></i>
+              Multidisciplinary Excellence
+            </h3>
+            <p>
+              World record in Bharatanatyam, black belt in Karate, advanced
+              levels in Hindi (written & spoken) and Abacus, mastery of Veena,
+              and multiple intercollege awards across technical, cultural, and
+              academic domains.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="wrap">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact">
+          <a class="c-card" href="mailto:vidyasriravikumar12@gmail.com"
+            ><i class="fa-regular fa-envelope"></i>
+            vidyasriravikumar12@gmail.com</a
+          >
+          <a class="c-card" href="tel:+917010058380"
+            ><i class="fa-solid fa-phone"></i> +91 7010058380</a
+          >
+          <div class="c-card">
+            <i class="fa-solid fa-location-dot"></i> 6/18 North Vellala Street,
+            Woraiyur, Trichy, Tamil Nadu
+          </div>
+        </div>
+        <div style="margin-top: 16px" class="chips">
+          <a
+            class="chip"
+            href="https://drive.google.com/file/d/1jWVQPlzd8OkTqfMOHnh8J9dG7ys51Bms/view?usp=sharing"
+            target="_blank"
+            ><i class="fa-regular fa-file-pdf"></i> Download Resume</a
+          >
+          <a
+            class="chip"
+            href="https://www.linkedin.com/in/vidyasriravikumar06"
+            target="_blank"
+            ><i class="fa-brands fa-linkedin"></i> LinkedIn</a
+          >
+          <a class="chip" href="https://github.com/Vidyasri-R" target="_blank"
+            ><i class="fa-brands fa-github"></i> GitHub</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <footer>© 2025 Vidyasri R — All rights reserved.</footer>
+    <script>
+      // Theme toggle
+      const toggle = document.getElementById("theme-toggle");
+      toggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark");
+        toggle.innerHTML = document.body.classList.contains("dark")
+          ? '<i class="fa-solid fa-sun"></i>'
+          : '<i class="fa-solid fa-moon"></i>';
+      });
+    </script>
+  </body>
+</html>
+
+
+
